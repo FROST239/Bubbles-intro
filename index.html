@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Bubbles/resursec/reset.css">
+    <link rel="stylesheet" href="link rel="preconnect href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Bubbles/resursec/style.css">
+    <title>GI</title>
+</head>
+<body>
+  <script type="module">
+    import Spheres2Background from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.8/build/backgrounds/spheres2.cdn.min.js';
+    
+    const bg = Spheres2Background(document.getElementById('webgl-canvas'), {
+       count: 200,
+       colors: [0xff0000, 0x0, 0xffffff],
+       minSize: 0.5,
+       maxSize: 1
+    });
+    
+    const button1 = document.getElementById('colors-btn');
+    
+    document.body.addEventListener('click', (ev) => {
+       if (ev.target !== button1) bg.togglePause();
+    });
+    
+    button1.addEventListener('click', () => {
+       bg.spheres.setColors([0xffffff * Math.random(), 0xffffff * Math.random(), 0xffffff * Math.random()]);
+       bg.spheres.light1.color.set(0xffffff * Math.random());
+    });
+  </script>
+
+    <div id="app">
+        <div class="hero">
+          <h1>GI</h1>
+          <h2>NORMANDY</h2>
+        </div>
+        <div class="buttons">
+          <button type="button" id="colors-btn">
+            Random colors
+          </button>
+        </div>
+        <canvas id="webgl-canvas"></canvas>
+    </div>
+
+
+
+
+</body>
+</html>
